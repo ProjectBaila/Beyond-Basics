@@ -1,0 +1,195 @@
+/* ========== Reset & Base ========== */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root{
+  --brand-red:#dc143c;
+  --brand-orange:#ff6b35;
+  --brand-orange-2:#ff4500;
+  --brand-gold:#ffcd3c;
+  --text:#333;
+  --muted:#666;
+  --white:#fff;
+}
+
+html, body { height:100%; }
+body{
+  font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height:1.6; color:var(--text); overflow-x:hidden; background:#fff;
+}
+.container{ max-width:1200px; margin:0 auto; padding:0 20px; }
+
+/* ========== Header ========== */
+.site-header{ padding:14px 0; background:#fff; position:sticky; top:0; z-index:50; box-shadow:0 2px 12px rgba(0,0,0,.06); }
+.logo{ height:56px; width:auto; display:block; }
+
+/* ========== Hero ========== */
+.hero{
+  min-height:100vh; display:flex; align-items:center; position:relative; overflow:hidden;
+  background:linear-gradient(45deg, var(--brand-red), var(--brand-orange-2), var(--brand-orange));
+  color:var(--white);
+}
+.hero::before{
+  content:''; position:absolute; inset:0;
+  background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dance" patternUnits="userSpaceOnUse" width="15" height="15"><polygon points="7,2 12,7 7,12 2,7" fill="rgba(255,255,255,0.08)"/></pattern></defs><rect width="100" height="100" fill="url(%23dance)"/></svg>');
+  animation: rotate 30s linear infinite;
+}
+@keyframes rotate{ 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+.hero-content{ position:relative; z-index:2; text-align:center; width:100%; }
+.hero h1{
+  font-family:'Bebas Neue', cursive;
+  font-size:clamp(3rem, 8vw, 6rem);
+  margin-bottom:20px; text-shadow:3px 3px 6px rgba(0,0,0,.3);
+  animation: slideInDown 1s ease-out;
+}
+.hero .subtitle{
+  font-size:clamp(1.2rem, 3vw, 1.8rem); margin-bottom:30px; font-weight:500;
+  text-shadow:2px 2px 4px rgba(0,0,0,.3);
+  animation: slideInUp 1s ease-out .3s both;
+}
+.cta-button{
+  display:inline-block; text-decoration:none; font-weight:600; text-transform:uppercase; letter-spacing:1px;
+  color:var(--white); padding:20px 45px; border-radius:15px; border:2px solid rgba(255,255,255,.3);
+  background:linear-gradient(45deg, var(--brand-gold), #f7931e);
+  box-shadow:0 8px 25px rgba(247,147,30,.4);
+  transition:transform .3s ease, box-shadow .3s ease;
+  animation: slideInUp 1s ease-out .6s both;
+}
+.cta-button:hover{ transform:translateY(-3px) scale(1.02); box-shadow:0 12px 35px rgba(247,147,30,.5); }
+@keyframes slideInDown{ from{transform:translateY(-100px); opacity:0;} to{transform:translateY(0); opacity:1;} }
+@keyframes slideInUp{ from{transform:translateY(100px); opacity:0;} to{transform:translateY(0); opacity:1;} }
+
+/* ========== Section Titles ========== */
+.section-title{
+  font-family:'Bebas Neue', cursive;
+  font-size:clamp(2.5rem, 6vw, 4rem);
+  text-align:center; margin-bottom:50px;
+  background:linear-gradient(45deg, var(--brand-red), var(--brand-orange));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+
+/* ========== Course Details ========== */
+.course-details{ padding:100px 0; background:linear-gradient(180deg, #fff8f0 0%, #fff 100%); }
+.details-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:35px; margin-bottom:60px;
+}
+.detail-card{
+  background:#fff; padding:35px; border-radius:25px; text-align:center; position:relative; overflow:hidden;
+  border-top:4px solid var(--brand-orange); transition:transform .3s ease, box-shadow .3s ease;
+  box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+.detail-card::before{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(45deg, transparent 0%, rgba(255,107,53,.05) 100%);
+  opacity:0; transition:opacity .3s ease;
+}
+.detail-card:hover{ transform:translateY(-8px) rotate(1deg); box-shadow:0 25px 50px rgba(255,107,53,.15); }
+.detail-card:hover::before{ opacity:1; }
+.detail-card h3{
+  font-family:'Bebas Neue', cursive; font-size:2rem; color:var(--brand-red); margin-bottom:15px;
+}
+.detail-card p{ font-size:1.1rem; color:var(--muted); font-weight:500; }
+
+/* Highlight */
+.highlight-box{
+  position:relative; overflow:hidden; margin:60px 0; text-align:center; color:var(--white);
+  background:linear-gradient(45deg, var(--brand-red), var(--brand-orange-2));
+  padding:45px; border-radius:30px; box-shadow:0 15px 40px rgba(220,20,60,.25);
+}
+.highlight-box::before{
+  content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+  background:linear-gradient(45deg, transparent, rgba(255,255,255,.12), transparent);
+  animation: shine 3s ease-in-out infinite;
+}
+@keyframes shine{
+  0%{ transform:translate(-100%, -100%) rotate(45deg); }
+  50%{ transform:translate(100%, 100%) rotate(45deg); }
+  100%{ transform:translate(-100%, -100%) rotate(45deg); }
+}
+.highlight-box h3{ position:relative; z-index:2; font-family:'Bebas Neue', cursive; font-size:2.5rem; margin-bottom:20px; }
+.highlight-box p{ position:relative; z-index:2; font-size:1.2rem; font-weight:500; }
+
+/* ========== Prerequisites ========== */
+.prerequisites{ padding:100px 0; background:linear-gradient(135deg, #fff8f0, #ffffff); }
+.prereq-card{
+  text-align:center; color:var(--white);
+  background:linear-gradient(45deg, var(--brand-gold), #f7931e);
+  padding:50px; border-radius:25px; box-shadow:0 15px 40px rgba(247,147,30,.3);
+}
+.prereq-card h3{ font-family:'Bebas Neue', cursive; font-size:2.5rem; margin-bottom:20px; }
+.prereq-card p{ font-size:1.2rem; font-weight:500; line-height:1.7; }
+
+/* ========== Benefits ========== */
+.benefits{
+  padding:100px 0; color:var(--white);
+  background:linear-gradient(225deg, var(--brand-orange), var(--brand-gold));
+}
+.benefits .section-title{ background:none; -webkit-text-fill-color:#fff; color:#fff; }
+.benefits-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:30px; }
+.benefit-item{ display:flex; align-items:flex-start; gap:15px; }
+.benefit-check{
+  width:30px; height:30px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:5px;
+  background:rgba(255,255,255,.2); border-radius:50%;
+}
+.benefit-item p{ font-size:1.1rem; font-weight:500; }
+
+/* ========== Learning ========== */
+.learning{ padding:100px 0; background:#fff; }
+.learning-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:30px; }
+.learning-item{
+  background:linear-gradient(135deg, #fff8f0, #ffffff);
+  padding:30px; border-radius:15px; border-left:5px solid var(--brand-orange);
+  transition:transform .3s ease;
+}
+.learning-item:hover{ transform:translateX(10px); }
+.learning-item h4{ color:var(--brand-red); font-weight:600; margin-bottom:10px; font-size:1.1rem; }
+
+/* ========== Testimonials (opcional si lo usas más adelante) ========== */
+.testimonials{ padding:100px 0; background:linear-gradient(180deg, #fff8f0 0%, #ffebcd 100%); }
+.testimonial-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(350px, 1fr)); gap:30px; }
+.testimonial-placeholder{
+  background:#fff; border-radius:20px; padding:40px; text-align:center;
+  border:2px dashed var(--brand-orange);
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+.testimonial-placeholder h4{
+  color:var(--brand-red); font-size:1.5rem; margin-bottom:20px; font-family:'Bebas Neue', cursive;
+}
+.testimonial-placeholder p{ color:var(--muted); font-style:italic; }
+
+/* ========== Final CTA ========== */
+.final-cta{
+  padding:100px 0; text-align:center; color:#fff;
+  background:linear-gradient(135deg, var(--brand-orange), var(--brand-red));
+}
+.final-cta h2{
+  font-family:'Bebas Neue', cursive; font-size:clamp(2rem, 5vw, 3.5rem); margin-bottom:30px;
+}
+.final-cta p{ font-size:1.3rem; margin-bottom:40px; font-weight:500; }
+.price-highlight{
+  display:inline-block; margin-bottom:40px; padding:20px 40px; border-radius:15px;
+  background:rgba(255,255,255,.2);
+}
+.price-highlight .price{ font-family:'Bebas Neue', cursive; font-size:3rem; color:var(--brand-gold); }
+
+/* ========== Thank You Page ========== */
+.thankyou{
+  min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff;
+  background:linear-gradient(135deg, var(--brand-orange), #f7931e, var(--brand-gold));
+}
+.thankyou .container{ max-width:800px; }
+.thankyou h1{
+  font-family:'Bebas Neue', cursive; font-size:clamp(3rem, 8vw, 6rem);
+  margin:16px 0 20px; text-shadow:3px 3px 6px rgba(0,0,0,.3);
+}
+.thankyou .subtitle{
+  font-size:clamp(1.2rem, 3vw, 1.8rem); margin-bottom:30px; font-weight:500;
+  text-shadow:2px 2px 4px rgba(0,0,0,.3);
+}
+
+/* ========== Utilities & Responsive ========== */
+img{ max-width:100%; height:auto; }
+a{ color:inherit; }
+@media (max-width:768px){
+  .details-grid, .benefits-grid, .learning-grid, .testimonial-grid{ grid-template-columns:1fr; }
+  .logo{ height:48px; }
+}
